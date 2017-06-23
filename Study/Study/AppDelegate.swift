@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxCocoa
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

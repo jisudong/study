@@ -35,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		158437D01EFD55A60064BA8B /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Study-frtmxqqzftetykefzizsvduhptoh/Build/Products/Debug-iphonesimulator/RxSwift/RxSwift.framework"; sourceTree = "<group>"; };
+		158437D21EFD57C60064BA8B /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		37F9E6CAE1F02EE25897358F /* Pods-Study.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Study.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Study/Pods-Study.debug.xcconfig"; sourceTree = "<group>"; };
 		47595F701A029BA50EE3D6D9 /* Pods_Study.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Study.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CD70230154A6BCD794C08CE /* Pods-Study.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Study.release.xcconfig"; path = "Pods/Target Support Files/Pods-Study/Pods-Study.release.xcconfig"; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 		37587BA7B4C6C9287C920D7E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				158437D01EFD55A60064BA8B /* RxSwift.framework */,
 				47595F701A029BA50EE3D6D9 /* Pods_Study.framework */,
 			);
 			name = Frameworks;
@@ -123,6 +126,7 @@
 			children = (
 				C8A3291D1EFB94F7002E15E9 /* AppDelegate.swift */,
 				C8A3291F1EFB94F7002E15E9 /* ViewController.swift */,
+				158437D21EFD57C60064BA8B /* Header.h */,
 				C8A329211EFB94F8002E15E9 /* Main.storyboard */,
 				C8A329241EFB94F8002E15E9 /* Assets.xcassets */,
 				C8A329261EFB94F8002E15E9 /* LaunchScreen.storyboard */,
@@ -496,6 +500,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Study;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -510,6 +515,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Study;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -591,6 +597,7 @@
 				C8A329441EFB94F8002E15E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C8A329451EFB94F8002E15E9 /* Build configuration list for PBXNativeTarget "StudyTests" */ = {
 			isa = XCConfigurationList;
@@ -599,6 +606,7 @@
 				C8A329471EFB94F8002E15E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C8A329481EFB94F8002E15E9 /* Build configuration list for PBXNativeTarget "StudyUITests" */ = {
 			isa = XCConfigurationList;
@@ -607,6 +615,7 @@
 				C8A3294A1EFB94F8002E15E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
