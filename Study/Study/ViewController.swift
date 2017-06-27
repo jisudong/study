@@ -14,8 +14,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
 //        let scheduler = SerialDispatchQueueScheduler(qos: .default)
 //        let serialScheduler = SerialDispatchQueueScheduler(qos: .default)
 //        let subscription = Observable<Int>.interval(0.3, scheduler: scheduler)
