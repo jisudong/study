@@ -22,6 +22,8 @@ example("Try yourself") {
 }
 
 
+// MARK: Creating and Subscribing to Observables
+
 example("never") {
     let disposeBag = DisposeBag()
     Observable<String>.never()
@@ -151,7 +153,68 @@ example("doOn") {
 }
 
 
+// MARK: Working with Subject
+extension ObservableType {
+    func addObserver(_  id: String) -> Disposable {
+        return subscribe { print("Subscription;", id, "Event:", $0) }
+    }
+}
 
+example("PublishSubject") {
+    let disposeBag = DisposeBag()
+    let subject = PublishSubject<String>()
+    
+    subject.addObserver("1").disposed(by: disposeBag)
+    subject.onNext("🐶")
+    subject.onNext("🐱")
+    
+    subject.addObserver("2").disposed(by: disposeBag)
+    subject.onNext("🅰️")
+    subject.onNext("🅱️")
+}
+
+example("ReplaySubject") {
+    let disposeBag = DisposeBag()
+    let subject = ReplaySubject<String>.create(bufferSize: 1)
+    
+    subject.addObserver("1").disposed(by: disposeBag)
+    subject.onNext("🐶")
+    subject.onNext("🐱")
+    
+    subject.addObserver("2").disposed(by: disposeBag)
+    subject.onNext("🅰️")
+    subject.onNext("🅱️")
+}
+
+example("BehaviorSubject") {
+    let disposeBag = DisposeBag()
+    let subject = BehaviorSubject(value: "🔴");
+    
+    subject.addObserver("1").disposed(by: disposeBag)
+    subject.onNext("🐶")
+    subject.onNext("🐱")
+    
+    subject.addObserver("2").disposed(by: disposeBag)
+    subject.onNext("🅰️")
+    subject.onNext("🅱️")
+    
+    subject.addObserver("3").disposed(by: disposeBag)
+    subject.onNext("🍐")
+    subject.onNext("🍊")
+}
+
+example("Variable") {
+    let disposeBag = DisposeBag()
+    let variable = Variable("🔴")
+    
+    variable.asObservable().addObserver("1").disposed(by: disposeBag)
+    variable.value = "🐶"
+    variable.value = "🐱"
+
+    variable.asObservable().addObserver("2").disposed(by: disposeBag)
+    variable.value = "🅰️"
+    variable.value = "🅱️"
+}
 
 
 
