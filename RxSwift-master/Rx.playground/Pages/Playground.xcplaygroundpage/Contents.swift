@@ -154,6 +154,7 @@ example("doOn") {
 
 
 // MARK: Working with Subject
+
 extension ObservableType {
     func addObserver(_  id: String) -> Disposable {
         return subscribe { print("Subscription;", id, "Event:", $0) }
@@ -214,6 +215,20 @@ example("Variable") {
     variable.asObservable().addObserver("2").disposed(by: disposeBag)
     variable.value = "🅰️"
     variable.value = "🅱️"
+}
+
+
+// MARK: Combination Operators
+
+example("startWith") {
+    let disposeBag = DisposeBag()
+    
+    Observable.of("", "", "", "")
+        .startWith("")
+        .startWith("")
+        .startWith("", "", "")
+        .subscribe(onNext: { print($0) })
+        .disposed(by: disposeBag)
 }
 
 
