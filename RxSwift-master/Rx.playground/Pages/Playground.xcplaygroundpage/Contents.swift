@@ -339,4 +339,50 @@ example("switchLatest") {
 }
 
 
+// MARK: Transforming Operators
+
+example("map") {
+    let disposeBag = DisposeBag()
+    Observable.of(1, 2, 3)
+        .map { $0 * $0 }
+        .subscribe(onNext: { print($0) })
+        .disposed(by: disposeBag)
+}
+
+example("flatMap and flatMapLatest") {
+    let disposeBag = DisposeBag()
+    
+    struct Player {
+        var score: Variable<Int>
+    }
+    
+    let 👦🏻 = Player(score: Variable(80))
+    let 👧🏼 = Player(score: Variable(90))
+    let ren = Player(score: Variable(91))
+    
+    let player = Variable(👦🏻)
+    
+    player.asObservable()
+        .flatMap { $0.score.asObservable() }
+        .subscribe(onNext: { print($0) })
+        .disposed(by: disposeBag)
+    
+    👦🏻.score.value = 85
+    
+    player.value = 👧🏼
+    
+    👦🏻.score.value = 95
+    
+    👧🏼.score.value = 100
+    
+    player.value = ren
+    
+    👦🏻.score.value = 92
+    
+    👧🏼.score.value = 93
+    
+    ren.score.value = 94
+}
+
+
 
