@@ -22,30 +22,30 @@ import Foundation
 //let point1 = Point(y: 5)
 //let point2 = Point(x: 2, y: 5) // 逐一成员构造器
 
-//struct Size {
-//    var width = 0.0, height = 0.0
-//}
-//struct Point {
-//    var x = 0.0, y = 0.0
-//}
-//
-//struct Rect {
-//    var origin = Point()
-//    var size = Size()
-//
-//    init() {}
-//
-//    init(origin: Point, size: Size) {
-//        self.origin = origin
-//        self.size = size
-//    }
-//
-//    init(center: Point, size: Size) {
-//        let originX = center.x - (size.width / 2)
-//        let originY = center.y - (size.height / 2)
-//        self.init(origin: Point(x: originX, y: originY), size: size) // 调用其他构造器
-//    }
-//}
+struct Size {
+    var width = 0.0, height = 0.0
+}
+struct Point {
+    var x = 0.0, y = 0.0
+}
+
+struct Rect {
+    var origin = Point()
+    var size = Size()
+
+    init() {}
+
+    init(origin: Point, size: Size) {
+        self.origin = origin
+        self.size = size
+    }
+
+    init(center: Point, size: Size) {
+        let originX = center.x - (size.width / 2)
+        let originY = center.y - (size.height / 2)
+        self.init(origin: Point(x: originX, y: originY), size: size) // 调用其他构造器
+    }
+}
 
 
 //// 类和结构体的所有属性都有默认值，同时没有自定义构造器，swift会有一个指定构造方法 init() {/*...*/}
@@ -103,100 +103,102 @@ import Foundation
 
 
 //// 指定构造方法
-//class Dog1 {
-//    var age: Int
-//    init() {
-//        self.age = 1 // 存储属性可以在 init 方法中赋值
-//    }
-//}
-//
-//class Dog2 {
-//    var name: String = "no name"
-//    var age: Int = 1
-//
-//    init() {
-//
-//    }
-//
-//    init(name: String, age: Int) {
-//        self.name = name
-//        self.age = age
-//    }
-//}
-//var dog2 = Dog2()
-//print("name = \(dog2.name), age = \(dog2.age)")
-//var dog3 = Dog2(name: "jack", age: 2)
-//print("name = \(dog3.name), age = \(dog3.age)")
+class Dog1 {
+    var age: Int
+    init() {
+        self.age = 1 // 存储属性可以在 init 方法中赋值
+    }
+}
+
+class Dog2 {
+    var name: String = "no name"
+    var age: Int = 1
+
+    init() {
+
+    }
+
+    init(name: String, age: Int) {
+        self.name = name
+        self.age = age
+    }
+}
+var dog2 = Dog2()
+print("name = \(dog2.name), age = \(dog2.age)")
+var dog3 = Dog2(name: "jack", age: 2)
+print("name = \(dog3.name), age = \(dog3.age)")
 
 //// 便利构造方法
-//class Dog3 {
-//    var speed: Double
-//    var name: String
-//    var age: Int
-//    init(name: String, age: Int, speed: Double) {
-//        self.name = name
-//        self.age = age
-//        self.speed = speed
-//    }
-//
-//    convenience init(name: String) {
-//        self.init(name: name, age: 1, speed: 0.0)
-//    }
-//
-//    convenience init(age: Int) {
-//        self.init(name: "", age: age, speed: 0.0)
-//    }
-//
-//    convenience init(speed: Double) {
-//        self.init(name: "", age: 1, speed: speed)
-//    }
-//}
+class Dog3 {
+    var speed: Double
+    var name: String
+    var age: Int
+    init(name: String, age: Int, speed: Double) {
+        self.name = name
+        self.age = age
+        self.speed = speed
+    }
+
+    convenience init(name: String) {
+        self.init(name: name, age: 1, speed: 0.0)
+    }
+
+    convenience init(age: Int) {
+        self.init(name: "", age: age, speed: 0.0)
+    }
+
+    convenience init(speed: Double) {
+        self.init(name: "", age: 1, speed: speed)
+    }
+}
 
 //// 如果父类中只有一个指定构造方法而且是无参的，子类的指定构造方法默认会自动调用父类的无参的指定构造方法
-//class Animal2 {
-//    init() {
-//        print("Animal --- init")
-//    }
-//}
-//
-//class Dog4 : Animal2 {
-//    var name: String
-//    init(name: String) {
-//        self.name = name
-//    }
-//
-//    // 即使重写为 convenience 构造器，也要加 override
-//    convenience override init() {
-//        self.init(name: "")
-//    }
-//}
-//var d4 = Dog4(name: "rose")
+class Animal2 {
+    init() {
+        print("Animal --- init")
+    }
+}
+
+class Dog4 : Animal2 {
+    var name: String
+    init(name: String) {
+        self.name = name
+    }
+
+    // 即使重写为 convenience 构造器，也要加 override
+    convenience override init() {
+        self.init(name: "")
+    }
+}
+var d4 = Dog4(name: "rose")
 
 // 如果父类中存在有参的指定构造方法，子类的指定构造方法不会自动调用父类无参的指定构造方法
 // 存储属性，只能由父类先初始化，再由子类初始化
 // 常量属性只能在定义它的类的构造过程中初始化，不能在子类中初始化
-//class Animal3 {
-//    var age: Int
-//    let life: Int
-//    init() {
-//        self.age = 1
+class Animal3 {
+    var age: Int
+    let life: Int
+    init() {
+        self.age = 1
+        self.life = 1
+        print("Animal --- init")
+    }
+//    init(name: String) {
 //        self.life = 1
-//        print("Animal --- init")
+//        self.age = 1
+//        print("Animal --- init-\(name)")
 //    }
-////    init(name: String) {
-////        print("Animal --- init-\(name)")
-////    }
-//}
-//
-//class Dog5 : Animal3 {
-//    var legs: Int
-//    override init() {
-//        self.legs = 4
-//        super.init()
-//        self.age = 10
-//       print("Dog5 --- init")
-//    }
-//}
+}
+
+class Dog5 : Animal3 {
+    var legs: Int
+    override init() {
+        self.legs = 4
+        super.init()
+        self.age = 10
+       print("Dog5 --- init")
+    }
+}
 
 // 构造器的自动继承
 /*
@@ -213,85 +215,85 @@ import Foundation
  注意
  对于规则 2，子类可以将父类的指定构造器实现为便利构造器。
  */
-//class Food {
-//    var name: String
-//    init(name: String) {
-//        self.name = name
-//    }
-//
-//    convenience init() {
-//        self.init(name: "[Unamed]")
-//    }
-//}
-//
-//class RecipeIngredient: Food {
-//    var quantity: Int
-//    init(name: String, quantity: Int) {
-//        self.quantity = quantity
-//        super.init(name: name)
-//    }
-//
-//    // 实现了父类所有的指定构造器，所以继承了遍历构造器 init()
-//    override convenience init(name: String) {
-//        self.init(name: name, quantity: 1)
-//    }
-//}
-//let recipe1 = RecipeIngredient() // 继承来的构造器
-//let recipe2 = RecipeIngredient(name: "tomato")
-//let recipe3 = RecipeIngredient(name: "tomato", quantity: 3)
-//
-//class ShoppingListItem: RecipeIngredient {
-//    var purchased = false
-//    var description: String {
-//        var output = "\(quantity) x \(name)"
-//        output += purchased ? " ✔" : " ✘"
-//        return output
-//    }
-//    // 继承了init() init(name: String) init(name: String, quantity: Int)
-//}
-//var breakfastList = [
-//    ShoppingListItem(),
-//    ShoppingListItem(name: "Bacon"),
-//    ShoppingListItem(name: "Eggs", quantity: 6)
-//]
-//breakfastList[0].name = "Orange juice"
-//breakfastList[0].purchased = true
-//for item in breakfastList {
-//    print(item.description)
-//}
+class Food {
+    var name: String
+    init(name: String) {
+        self.name = name
+    }
+
+    convenience init() {
+        self.init(name: "[Unamed]")
+    }
+}
+
+class RecipeIngredient: Food {
+    var quantity: Int
+    init(name: String, quantity: Int) {
+        self.quantity = quantity
+        super.init(name: name)
+    }
+
+    // 实现了父类所有的指定构造器，所以继承了遍历构造器 init()
+    override convenience init(name: String) {
+        self.init(name: name, quantity: 1)
+    }
+}
+let recipe1 = RecipeIngredient() // 继承来的构造器
+let recipe2 = RecipeIngredient(name: "tomato")
+let recipe3 = RecipeIngredient(name: "tomato", quantity: 3)
+
+class ShoppingListItem: RecipeIngredient {
+    var purchased = false
+    var description: String {
+        var output = "\(quantity) x \(name)"
+        output += purchased ? " ✔" : " ✘"
+        return output
+    }
+    // 继承了init() init(name: String) init(name: String, quantity: Int)
+}
+var breakfastList = [
+    ShoppingListItem(),
+    ShoppingListItem(name: "Bacon"),
+    ShoppingListItem(name: "Eggs", quantity: 6)
+]
+breakfastList[0].name = "Orange juice"
+breakfastList[0].purchased = true
+for item in breakfastList {
+    print(item.description)
+}
 
 //// 可失败构造器 init?  构造的是可选型
-//struct Animal {
-//    var species: String
-//    init?(species: String) {
-//        if species.isEmpty {
-//            return nil // 只是用 return nil 表示构造失败，不是真的有返回值
-//        }
-//        self.species = species
-//    }
-//}
-//
-//enum TemperatureUnit {
-//    case Kelvin, Celsius, Fahrenheit
-//    init?(symbol: Character) {
-//        switch symbol {
-//        case "K":
-//            self = .Kelvin
-//        case "C":
-//            self = .Celsius
-//        case "F":
-//            self = .Fahrenheit
-//        default:
-//            return nil
-//        }
-//    }
-//}
-//
+struct Animal {
+    var species: String
+    init?(species: String) {
+        if species.isEmpty {
+            return nil // 只是用 return nil 表示构造失败，不是真的有返回值
+        }
+        self.species = species
+    }
+}
+
+enum TemperatureUnit {
+    case Kelvin, Celsius, Fahrenheit
+    init?(symbol: Character) {
+        switch symbol {
+        case "K":
+            self = .Kelvin
+        case "C":
+            self = .Celsius
+        case "F":
+            self = .Fahrenheit
+        default:
+            return nil
+        }
+    }
+}
+
 //// 枚举带原始值，会自动生成一个可失败构造器 init?(rawValue:)
-//// 所以上面可以重写为下面的形式
-//enum TemperatureUnit1: Character {
-//    case Kelvin = "K", Celsius = "C", Fahrenheit = "F"
-//}
+// 所以上面可以重写为下面的形式
+enum TemperatureUnit1: Character {
+    case Kelvin = "K", Celsius = "C", Fahrenheit = "F"
+}
 
 /*
  类，结构体，枚举的可失败构造器可以横向代理到类型中的其他可失败构造器。类似的，子类的可失败构造器也能向上代理到父类的可失败构造器。
@@ -301,51 +303,51 @@ import Foundation
  注意
  可失败构造器也可以代理到其它的非可失败构造器。通过这种方式，你可以增加一个可能的失败状态到现有的构造过程中。
  */
-//class Product {
-//    var name: String
-//    init?(name: String) {
-//        if name.isEmpty {
-//            return nil
-//        }
-//        self.name = name
-//    }
-//}
-//
-//class CartItem: Product {
-//    var quantity: Int
-//    init?(name: String, quantity: Int) {
-//        if quantity < 1 {
-//            return nil
-//        }
-//        self.quantity = quantity
-//        super.init(name: name)
-//    }
-//}
+class Product {
+    var name: String
+    init?(name: String) {
+        if name.isEmpty {
+            return nil
+        }
+        self.name = name
+    }
+}
+
+class CartItem: Product {
+    var quantity: Int
+    init?(name: String, quantity: Int) {
+        if quantity < 1 {
+            return nil
+        }
+        self.quantity = quantity
+        super.init(name: name)
+    }
+}
 
 
 // 析构方法
-//class Life {
-//    deinit {
-//        print("Life -- deinit")
-//    }
-//}
-//
-//class Animal6: Life {
-//    deinit {
-//        print("Animal6 -- deinit")
-//    }
-//}
-//
-//class Dog6: Animal6 {
-//    deinit {
-//        print("Dog6 -- deinit")
-//    }
-//}
-//
-//func test() {
-//    _ = Dog6()
-//
-//}
-//test()
+class Life {
+    deinit {
+        print("Life -- deinit")
+    }
+}
+
+class Animal6: Life {
+    deinit {
+        print("Animal6 -- deinit")
+    }
+}
+
+class Dog6: Animal6 {
+    deinit {
+        print("Dog6 -- deinit")
+    }
+}
+
+func test() {
+    _ = Dog6()
+
+}
+test()
 
 

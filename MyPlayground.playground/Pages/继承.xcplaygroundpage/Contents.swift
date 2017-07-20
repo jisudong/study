@@ -3,47 +3,47 @@
 import Foundation
 
 //// 继承
-//class Animal {
-//    var age: Int = 0
-//    let legs: Int = 4
-//    final var live = 1
-//    func run() {
-//        print("Animal --- run")
-//    }
-//
-//    static func eat() {
-//        print("Animal --- eat")
-//    }
-//
-//    class func drink() {
-//        print("Animal --- drink")
-//    }
-//
-//}
-//
-//class Cat : Animal {
-//    override var age: Int {
-//        get {
-//            return 1
-//        }
-//        set {
-//
-//        }
-//    }
-//
-//    override func run() { // 重写方法
-//        super.run()
-//        print("Cat --- run")
-//    }
-//
-//    override class func drink() {
-//        print("Cat --- drink")
-//    }
-//
-//}
-//var cat = Cat()
-//cat.run()
-//Animal.eat()
+class Animal {
+    var age: Int = 0
+    let legs: Int = 4
+    final var live = 1
+    func run() {
+        print("Animal --- run")
+    }
+
+    static func eat() {
+        print("Animal --- eat")
+    }
+
+    class func drink() {
+        print("Animal --- drink")
+    }
+
+}
+
+class Cat : Animal {
+    override var age: Int {
+        get {
+            return 1
+        }
+        set {
+
+        }
+    }
+
+    override func run() { // 重写方法
+        super.run()
+        print("Cat --- run")
+    }
+
+    override class func drink() {
+        print("Cat --- drink")
+    }
+
+}
+var cat = Cat()
+cat.run()
+Animal.eat()
 
 
 

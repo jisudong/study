@@ -40,21 +40,21 @@ import Foundation
 //{
 //    print("\(greeting[index])", terminator: " ")
 //}
-//
+
 //let num = "123.45"
 //let deRange = num.range(of: ".")
 //let wholeNumber = num[num.startIndex..<deRange!.lowerBound]
-//
+
 //var str2 = "hello"
 //let start2 = str2.index(str2.startIndex, offsetBy: 1)
 //let end2 = str2.index(str2.startIndex, offsetBy: 3)
 //str2.removeSubrange(start2...end2)
-//
+
 //var str3 = "hello"
 //let start3 = str3.index(str3.startIndex, offsetBy: 1)
 //str3.remove(at: start3)
 //str3
-//
+
 //var str4 = "hello"
 //let start4 = str4.index(str4.startIndex, offsetBy: 1)
 //let end4 = str4.index(str4.startIndex, offsetBy: 3)
@@ -63,16 +63,17 @@ import Foundation
 
 
 
-//// 字符串是值类型
-////空字符串
+// 字符串是值类型
+
+//// 空字符串
 //var strr = ""
 //var strr2 = String()
 //var strr3 = "hugaih"
 //strr.isEmpty
 //strr3.isEmpty
-//
-//
-////字符串拼接
+
+
+//// 字符串拼接
 //var str1 = "123"
 //var str2 = "456"
 //var str3 = str1 + str2
@@ -80,18 +81,18 @@ import Foundation
 //let i: Character = "!"
 //str3.append(i)
 
-//字符串插入
+//// 字符串插入
 //var age = 10
 //var hand = 2
 //var str4 = "I have \(hand) hands, \(age) years old"
 //var str5 = "I have " + String(hand) + " hands," + "\(age) years old"
 
-// 调用insert(_:at:)方法可以在一个字符串的指定索引插入一个字符。
+//// 调用insert(_:at:)方法可以在一个字符串的指定索引插入一个字符。
 //var welcome = "hello"
 //let index = welcome.index(welcome.startIndex, offsetBy: 1)
 //welcome.insert("!", at: index)
 
-// 调用insert(contentsOf:at:)方法可以在一个字符串的指定索引插入一个字符串。
+//// 调用insert(contentsOf:at:)方法可以在一个字符串的指定索引插入一个字符串。
 //var welcome = "hello"
 //welcome.insert(contentsOf: " there".characters, at: welcome.endIndex)
 
@@ -127,7 +128,7 @@ import Foundation
 //str_d.hasPrefix("hello")
 //str_d.hasSuffix("world")
 
-// 把一个句子中所有单词的首字母大写/小写
+//// 把一个句子中所有单词的字母大写/小写
 //var str_e = "Hello, playground"
 //str_e.uppercased()
 //str_e.lowercased()
@@ -138,7 +139,7 @@ import Foundation
 //str_f.trimmingCharacters(in: CharacterSet(charactersIn: " !")) // 截取空格和！
 
 
-// split
+//// split
 //var str_g = "welcome to play swift!Step-by-Step learn from now"
 //str_g.components(separatedBy: " ")
 //str_g.components(separatedBy: CharacterSet(charactersIn: " !-"))
