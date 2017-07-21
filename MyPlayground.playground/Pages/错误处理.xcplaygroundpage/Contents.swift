@@ -101,8 +101,8 @@ do {
 
 // 可以使用try?通过将错误转换成一个可选值来处理错误。如果在评估try?表达式时一个错误被抛出，那么表达式的值就是nil
 func someThrowingFunction() throws -> Int {
-//    throw VendingMachineError.outOfStock
-    return 1
+    throw VendingMachineError.outOfStock
+//    return 1
 }
 let x = try? someThrowingFunction()
 

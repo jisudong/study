@@ -83,7 +83,7 @@ public class E {
     }
 }
 internal class F: E {
-    internal func someMethod() {
+    public func someMethod() {
 //        super.someMethod()
     }
 }
@@ -93,6 +93,7 @@ internal class F: E {
 // 常量、变量、属性、下标的 Getters 和 Setters 的访问级别和它们所属类型的访问级别相同。
 // 可以通过 fileprivate(set)，private(set) 或 internal(set) 为它们的写入权限指定更低的访问级别
 struct TrackedString {
+//    let a = A() // 报错，因为这里的 a 的访问级别是 internal ，类 A 的访问级别是 private
     private(set) var stringOfEdits = 0 //getter: internal, setter: private
     var value: String = "" {
         didSet {
@@ -173,7 +174,7 @@ private extension N {
         
     }
     
-    internal func anotherMethod() { // 覆盖了 private， 访问级别是 internal
+    private func anotherMethod() { // 覆盖了 private， 访问级别是 internal
         
     }
 }

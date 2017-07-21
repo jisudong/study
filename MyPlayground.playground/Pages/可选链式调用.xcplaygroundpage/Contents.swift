@@ -40,7 +40,7 @@ class Address {
         if buildingName != nil {
             return buildingName
         } else if buildingNumber != nil && street != nil {
-            return "\(buildingNumber)\(street)"
+            return "\(String(describing: buildingNumber))\(String(describing: street))"
         } else {
             return nil
         }
