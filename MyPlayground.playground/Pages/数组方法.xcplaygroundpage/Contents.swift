@@ -47,7 +47,7 @@ let colorfulShapes = colors.flatMap { color in
 
 // reduce 
 // 对数组中的元素按照某种规则进行合并，得到一个返回值
-let num = array.reduce(5) {
+let num = array.reduce(6) {
     print("\($0) -- \($1)")
     return $0 + $1
 }
