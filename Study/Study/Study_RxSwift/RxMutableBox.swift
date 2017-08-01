@@ -6,4 +6,18 @@
 //  Copyright © 2017年 syswin. All rights reserved.
 //
 
-import Foundation
+
+final class RxMutableBox<T> : CustomDebugStringConvertible {
+    
+    var value: T
+    
+    init(_ value: T) {
+        self.value = value
+    }
+}
+
+extension RxMutableBox {
+    var debugDescription: String {
+        return "MutableBox(\(self.value))"
+    }
+}
